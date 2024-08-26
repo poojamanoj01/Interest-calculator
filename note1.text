@@ -1,0 +1,175 @@
+----------------------------- REACT - Advanced Front End Technology--------------------------------
+
+   Basic Concepts
+------------------- 
+  - React App : Collection of JS Libraries
+  - React App uses collection components, Components must arranged in a tree structure, Root component it name is by default "APP" Compent
+
+      - Components : Part of users of user interface
+
+    - React used to create single page application   
+
+    - pure fn : used to build rear component, which doesn't cause side effects 
+
+    - Declarative Approach 
+
+    - virtual DOM : Light weight representation of real DOM
+
+    - Babel Library : transpile jsx code to simple react functon which is understood the browser
+
+    - JSX (Javascript XML) - Js  Extension for HTML : used to display contents in browser
+
+       - JSX Elements : const heading = <h1>heading</h1> 
+          - RULES for JSX code :-
+        -----------------------------  
+             - Every JSX Element must inside a single parent tag
+             - every JSX tag must have a closing tag (<h1> content</h1> ,self closing tag : <br/>)
+             - parent tag : can be a container tag / react fragment (<>.....</>)
+             - JSX using camel case, camel case : fontSize
+             - Instead attribute 'class' JSX uses 'className'
+             - Instead of attribute 'for' use 'htmlFor' in JSX 
+             - use js code in JSX, we have place code inside {js-code}  
+
+
+       - REACT App Creation
+       ---------------------
+          - CRA (using create-react-app command) :npx create-react-app app-name ,npm start
+          - Vite : is tool to build web project  
+             - installing vite globally : 
+                - command for installing vite : npm i -g create-vite
+                - react app using vite : npm create vite@latest reactAppName -- --template react
+                - to run reat : npm run dev
+
+
+             - File & Folder Structure of React app using vita
+             --------------------------------------------------
+                  - .gitignore : used to mention files/folder to be ignored while  adding to git
+                  - package.json : npm configuration file for the project
+                  - package-lock.json : contain version history of all packages installed
+                  - vite.config
+                  - eslint.config
+                  - index.html : entry poitn of your react app
+                  - node_modules used to hold copies dependent Libraries used to create react app
+                  - public folder : 
+                  - src folder : logic defined folder
+                      - assets folder : 
+                      - main.jsx : 
+
+                  - Run react app using vite command : npm run dev   
+                  - export & import :  
+
+
+
+         - Components : Part of users of user interface are indepentend and reusable code
+                  - create react component : 
+                        - create js/JSX file
+                        -  the file name must starts with capital letter
+
+                          shortcuts
+                        ---------------
+                        -  rafce : fot create a arrow function (fn based component)
+                        -  rcep  :  for normal function (fn based component)
+                        -  rcc   : for create class based component
+                   - Types of component :
+
+                      - class based components / stateful component:                    
+                      - Functional Components / stateless component : create js pure fn and return jsx from ie fn   
+
+ 
+
+                      -        class based component                                        Functional based component
+                     ---------------------------------------------------      ---------------------------------------------------------
+
+                     1. uses class extends from react component ,             1.  JS pure fn which accept props and return JSX element
+                        its render method must return JSX element
+
+                     2. Statefull component                                   2. Stateless component
+                      
+                     3. It require render to return JSX                       3. No need to use render method
+        
+                     4. Constructor used to initialise state                  4. No need to use Constructor
+        
+                     5. Uses life cycle methods in component                  5. Life cycle methods are not available        
+         
+                     6. Compent will alive depending on different life        6. It executes from top to bottom , once it return JSX, then it
+                        cycle phases                                             cannot be alive
+        
+                     7. Hooks are not used                                    7. hooks used to provide react features
+
+
+         - Data sharing btw components :
+             - parent component to child component : use 'props' in child component, props is property of an component, and its type is object, props will always placed as the argument of child component function
+
+            - conditional rendering : Used to rendering contents in browser acording to a conditiona, to define conition we can use if statements (&&) , if-else statements (?:)
+
+            - displaying array using JSX in react app : use map method and to unique ly identify each item in a list use 'key' attribute tot the duplicating JSX element in component
+            
+            - React Events Handling : 
+              - Handling function without argument           : event={functionName}
+              - Handling functon with argument               : event={()=>function(arg)}
+              - Handling functon with argument as that event : event ={(event)=>functionName(event)}
+
+            - Applying css in react component
+              - inline css       : style={{cssProperty:value,}}
+              - external         : use import 'path of css file'
+              - css modules file : use css module file, use file extension as .module.css, define global style in a single file using css selector as className  
+
+
+        - React State : used to store values in a component, it's an object, whenever state changes component will re-render (used in class based component)   
+           -setState(value)  : to change the state , its arg must be an object      
+
+
+       - React component Life cycle method :-
+       --------------------------------------
+
+          1. Mounting phase   : Putting JSX into DOM
+
+              - Constructor()
+              - getDerivedStateFromProps()
+              - render()
+              - componentDidMount()
+              
+          2. Updating Phase   : When component is Updating
+
+              - getDerivedStateFromProps()
+              - shouldComponentUpdate()
+              - render()
+              - getSnapshotBeforeUpdate()
+              - componentDidUpdate()
+          3. Unmounting Phase : Removing s component from DOM
+
+              - componentWillUnmount()
+
+
+      - React Hooks : used to allow Functional component to have react features , hooks are predefined function in react , inorder to use a hook
+             - Two types hooks:
+                 1. predefined Hooks :-
+                       - useState hook : used to create state in Functional component
+                        const[stateName, state updatinf function name] = useState(intialValue)
+
+                       - useEffect() : used to provide side effects to the component
+                                       syntax : useEffect(callback,dependency)
+
+                                         - callback   : used to provide effects using fn
+                                         - dependency : decide when side effects applied to component
+                                                        
+                                                         - no dependency          : side effects will apply to the component whnever a change happens
+                                                         - [] empty array         : side effects will applied only at the time of component Creation
+                                                         - [state,props,variable] : side effects will applied only at the time of component creation and changing of state/props/variable that used in the dependency
+                                                         
+
+                 2. customised Hooks :-  create a jsx file eith filename starts with 'use' , inside file define a fn with the name same as filename.          
+
+
+       - Handling Forms in react : how it Handling data when it changes also when it submitted
+           - In react form data must handled by react component, to store data it has to use 'state'
+
+           - while sumbitting the form, use preventDefault() to avoid unneccessary refreshing of webpage
+           -  2 types of component depending up on how data is managed by component in forms        
+                  - controlled component   : data will be stored in component state,
+                  - Uncontrolled component :  
+
+
+              
+
+              
